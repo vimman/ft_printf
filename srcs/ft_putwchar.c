@@ -83,7 +83,7 @@ int	main(int argc, char **argv)
 {
 	if (argc < 1 && argc > 2)
 		return (-1);
-	printf("setlocale : %s\n", setlocale(LC_ALL, "fr_FR.UTF-8"));
+	//printf("setlocale : %s\n", setlocale(LC_ALL, "fr_FR.UTF-8"));
 	printf("MB_CUR_MAX = %d\n", MB_CUR_MAX);
 	wchar_t	test;
 	if (argc > 1)

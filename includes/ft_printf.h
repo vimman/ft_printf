@@ -17,7 +17,10 @@ typedef union	u_union
 	char	*s;
 }				t_union;
 
+int				ft_putbuf(char *str, int fd);
+
 int				ft_vfprintf(FILE *restrict stream,
 		const char *restrict format, va_list ap);
+
 int				ft_printf(const char *restrict format, ...);
 #endif

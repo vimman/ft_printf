@@ -10,7 +10,7 @@ DIR = srcs
 
 LIB = lib
 
-SRCS = main.c ft_printf.c
+SRCS = main.c ft_printf.c ft_putbuf.c
 
 SRC = $(addprefix $(DIR)/,$(SRCS))
 

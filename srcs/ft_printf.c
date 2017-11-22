@@ -1,6 +1,10 @@
 #include "ft_printf.h"
 #include "libft.h"
 
+/*
+** Gestions des premiers flags rencontres
+*/
+
 int		ft_flags(const char *restrict format)
 {
 	if (*format == '-')
@@ -18,6 +22,10 @@ int		ft_flags(const char *restrict format)
 	return (1);
 }
 
+/*
+** Gestion de la largeur
+*/
+
 int		ft_fwidth(const char *restrict format)
 {
 	int	width;
@@ -32,9 +40,14 @@ int		ft_fwidth(const char *restrict format)
 		++format;
 		++i;
 	}
-	printf("[field width is %d] ", width);
+	if (width > 0)
+		printf("[field width is %d] ", width);
 	return (i);
 }
+
+/*
+** Gestion de la precision
+*/
 
 int		ft_precis(const char *restrict format)
 {
@@ -64,6 +77,10 @@ int		ft_precis(const char *restrict format)
 	}
 	return (i);
 }
+
+/*
+** Gestion de la longueur
+*/
 
 int		ft_length(const char *restrict format)
 {
@@ -109,32 +126,38 @@ int		ft_length(const char *restrict format)
 	return (i);
 }
 
-int		ft_ident(format)
+/*
+** Gestion des identificateurs
+*/
+
+int		ft_ident(const char *restrict format, va_list ap)
 {
-	(void)format;
-	return (0);
+	if (*format == 'd')
+	{
+		ft_putbuf(ft_itoa(va_arg(ap, int)), 1);
+	}
+	return (1);
 }
+
+
 
 int		ft_vfprintf(FILE *restrict stream,
 		const char *restrict format, va_list ap)
 {
 	int		ret;
 	int		i;
-	char	*buf[BUFFSIZE];
+	char	tmp[BUFFSIZE];
 
-	i = 0;
 	ret = 0;
 	(void)stream;
 	(void)ap;
-	(void)buf;
 	while (*format)
 	{
+		i = 0;
 		while (*format && *format != '%')
-		{
-			printf("%c", *format);
-			ret++;
-			format++;
-		}
+			tmp[i++] = (char)*format++;
+		ft_putbuf(tmp, 1);
+		bzero(tmp, ft_strlen(tmp));
 		if (*format == '%')
 		{
 			++format;
@@ -142,13 +165,14 @@ int		ft_vfprintf(FILE *restrict stream,
 			format += ft_fwidth(format);
 			format += ft_precis(format);
 			format += ft_length(format);
-	//		format += ft_ident(format);
+			format += ft_ident(format, ap);
 		}
 	}
+	ft_putbuf(NULL, 1);
 	return (ret);
 }
 
-int	ft_printf(const char *restrict format, ...)
+int		ft_printf(const char *restrict format, ...)
 {
 	int		ret;
 	va_list	arg;
