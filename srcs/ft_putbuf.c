@@ -1,41 +1,30 @@
 #include <unistd.h>
 #include "libft.h"
 
-#define BUFFSIZE 10
+#define BUFFSIZE 10 //TODO
 
 int		ft_putbuf(char *str, int fd)
 {
-	static char	buf[BUFFSIZE];
-	static int	k = -1;
+	static char	buf[BUFFSIZE + 1];
+	static int	k = 0;
 	int			len;
 
-	len = 0;
-	ft_bzero(buf, BUFFSIZE);
-	if (str == NULL)
+	if (!str)
+		write(fd, buf, ft_strlen(buf));
+	len = ft_strlen(str);
+	while (str && *str)
 	{
-		len = ft_strlen((char*)buf);
-		write(fd, buf, len);
-	}
-	while(*str)
-	{
-		while(*str && k < BUFFSIZE)
+		while (*str && k < BUFFSIZE)
 		{
-			buf[++k] = *str;
+			buf[k++] = *str;
 			++str;
 		}
 		if (k == BUFFSIZE)
 		{
 			write(fd, buf, BUFFSIZE);
 			ft_bzero(buf, BUFFSIZE);
-			k = -1;
+			k = 0;
 		}
 	}
-	return(len);
-}
-
-int		main(int argc, char **argv)
-{
-	if (argc < 2)
-		return (0);
-	ft_putbuf(argv[1], 1);
+	return (len);
 }
