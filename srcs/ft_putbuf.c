@@ -1,7 +1,6 @@
 #include <unistd.h>
 #include "libft.h"
-
-#define BUFFSIZE 10 //TODO
+#include "ft_printf.h"
 
 int		ft_putbuf(char *str, int fd)
 {
