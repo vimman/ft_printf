@@ -9,7 +9,11 @@ int		ft_putbuf(char *str, int fd)
 	int			len;
 
 	if (!str)
+	{
 		write(fd, buf, ft_strlen(buf));
+		ft_bzero(buf, BUFFSIZE);
+		k = 0;
+	}
 	len = ft_strlen(str);
 	while (str && *str)
 	{

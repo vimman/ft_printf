@@ -17,12 +17,12 @@ int		main(void)
 	printf("real printf\t: ");
 	printf("hello %d\n", 42);
 	printf("\n\n");
-//
-//	printf("real printf\t: ");
-//	printf("hello %ld", 21474836480);
-//	printf("\nft_printf\t: ");
-//	ft_printf("hello %ld", 21474836480);
-//	printf("\n\n");
+
+	ft_putstr("\nft_printf\t: ");
+	ft_printf("hello %ld", 9223372036854775807);
+	ft_putstr("\n\n");
+	printf("real printf\t: ");
+	printf("hello %ld", 9223372036854775807);
 //
 //	printf("real printf\t: ");
 //	printf("hello %f", 21474.86480);

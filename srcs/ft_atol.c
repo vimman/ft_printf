@@ -1,6 +1,6 @@
 #include <unistd.h>
 #include <stdio.h>
-#include "../../../libft/libft.h"
+#include "libft.h"
 
 long int ft_atol(char *str)
 {
@@ -9,7 +9,7 @@ long int ft_atol(char *str)
 
 	result = 0;
 	negatif = 1;
-	while(ft_space(*str))
+	while(ft_isspace(*str))
 		str++;
 	if (*str == '-')
 		negatif = -1;
