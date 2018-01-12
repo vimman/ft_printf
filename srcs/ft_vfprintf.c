@@ -1,6 +1,5 @@
 #include "ft_printf.h"
 #include "libft.h"
-
 int		ft_vfprintf(FILE *restrict stream,
 		const char *restrict format, va_list ap)
 {
@@ -20,7 +19,7 @@ int		ft_vfprintf(FILE *restrict stream,
 		i = 0;
 		while (*format && *format != '%')
 			tmp[i++] = (char)*format++;
-		ft_putbuf(tmp, 1);
+		ret = ft_putbuf(tmp, 1);
 		bzero(tmp, ft_strlen(tmp));
 		if (*format == '%')
 		{

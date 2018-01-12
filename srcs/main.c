@@ -6,23 +6,23 @@ int	ft_printf(const char *restrict format, ...);
 
 int		main(void)
 {
-//	printf("real printf\t: ");
-//	printf("hello %s yolo", "you");
-//	printf("\nft_printf\t: ");
-//	ft_printf("hello %s yolo", "you");
-//	printf("\n\n");
-//
+	ft_printf("ft_printf\t: ");
+	ft_printf("hello %s yolo\n", "you");
+	printf("real printf\t: ");
+	printf("hello %s yolo", "you");
+	printf("\n\n");
+
 	ft_putstr("\nft_printf\t: ");
 	ft_printf("hello %d\n", 42);
 	printf("real printf\t: ");
 	printf("hello %d\n", 42);
-	printf("\n\n");
+	printf("\n");
 
 	ft_putstr("\nft_printf\t: ");
-	ft_printf("hello %ld", 9223372036854775807);
-	ft_putstr("\n\n");
+	ft_printf("hello %ld\n", 9223372036854775807);
 	printf("real printf\t: ");
-	printf("hello %ld", 9223372036854775807);
+	printf("hello %ld\n", 9223372036854775807);
+	printf("oups %.5d\n", 23432357);
 //
 //	printf("real printf\t: ");
 //	printf("hello %f", 21474.86480);

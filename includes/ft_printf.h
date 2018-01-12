@@ -24,7 +24,7 @@ typedef struct	s_flags
 
 	size_t		prec;
 	size_t		min_w;
-
+	size_t		ret;
 }				t_flags;
 
 int				ft_putbuf(char *str, int fd);

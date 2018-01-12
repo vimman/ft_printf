@@ -1,5 +1,5 @@
-#include "ft_printf.h"
 #include "libft.h"
+#include "ft_printf.h"
 
 int		ft_flags(const char *restrict format, t_flags *f)
 {
