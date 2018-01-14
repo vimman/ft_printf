@@ -30,10 +30,12 @@ int		ft_vfprintf(FILE *restrict stream,
 			format += ft_length(format, &f);
 			format += ft_ident(format, ap, &f);
 		}
+		ret += ft_putbuf(tmp, 1);
 	}
 	(void)f;
 	//f.opts = f.opts & PLUS;
 	//ft_putbuf(ft_itoa_base(f.opts, 2), (int)stream);
+	ft_putbuf("", 1);
 	ft_putbuf(NULL, 1);
 	return (ret);
 }

@@ -39,4 +39,7 @@ int				ft_precis(const char *restrict format, t_flags *f);
 int				ft_length(const char *restrict format, t_flags *f);
 int				ft_ident(const char *restrict format, va_list ap, t_flags *f);
 int				ft_printf(const char *restrict format, ...);
+int				ft_d(va_list ap, t_flags *f);
+int				ft_s(va_list ap, t_flags *f);
+int				ft_s(va_list ap, t_flags *f);
 #endif

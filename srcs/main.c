@@ -16,13 +16,20 @@ int		main(void)
 	ft_printf("hello %d\n", 42);
 	printf("real printf\t: ");
 	printf("hello %d\n", 42);
-	printf("\n");
+	printf("\n\n");
 
 	ft_putstr("\nft_printf\t: ");
 	ft_printf("hello %ld\n", 9223372036854775807);
 	printf("real printf\t: ");
 	printf("hello %ld\n", 9223372036854775807);
-	printf("oups %.5d\n", 23432357);
+	//printf("oups %.5d\n", 23432357);
+	printf("\n\n");
+
+	ft_printf("ft_printf\t: ");
+	ft_printf("hello %s yolo\n", "👾");
+	printf("real printf\t: ");
+	printf("hello %s yolo", "👾");
+	printf("\n\n");
 //
 //	printf("real printf\t: ");
 //	printf("hello %f", 21474.86480);
