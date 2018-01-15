@@ -14,7 +14,8 @@ int		ft_putbuf(char *str, int fd)
 		ft_bzero(buf, BUFFSIZE);
 		k = 0;
 	}
-	len = ft_strlen(str);
+	else
+		len = ft_strlen(str);
 	while (str && *str)
 	{
 		while (*str && k < BUFFSIZE)
