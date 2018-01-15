@@ -6,29 +6,39 @@ int	ft_printf(const char *restrict format, ...);
 
 int		main(void)
 {
+	int ret;
+
 	ft_printf("ft_printf\t: ");
-	ft_printf("hello %s yolo\n", "you");
+	ret = ft_printf("hello %s yolo\n", "you");
+	ft_printf("ret = %d\n", ret);
 	printf("real printf\t: ");
-	printf("hello %s yolo", "you");
+	ret = printf("hello %s yolo\n", "you");
+	printf("ret = %d\n", ret);
 	printf("\n\n");
 
 	ft_putstr("\nft_printf\t: ");
-	ft_printf("hello %d\n", 42);
+	ret = ft_printf("hello %d\n", 42);
+	ft_printf("ret = %d\n", ret);
 	printf("real printf\t: ");
-	printf("hello %d\n", 42);
+	ret = printf("hello %d\n", 42);
+	printf("ret = %d\n", ret);
 	printf("\n\n");
 
 	ft_putstr("\nft_printf\t: ");
-	ft_printf("hello %ld\n", 9223372036854775807);
+	ret = ft_printf("hello %ld\n", 9223372036854775807);
+	ft_printf("ret = %d\n", ret);
 	printf("real printf\t: ");
-	printf("hello %ld\n", 9223372036854775807);
+	ret = printf("hello %ld\n", 9223372036854775807);
+	printf("ret = %d\n", ret);
 	//printf("oups %.5d\n", 23432357);
 	printf("\n\n");
 
 	ft_printf("ft_printf\t: ");
-	ft_printf("hello %s yolo\n", "👾");
+	ret = ft_printf("hello %s yolo\n", "👾");
+	ft_printf("ret = %d\n", ret);
 	printf("real printf\t: ");
-	printf("hello %s yolo", "👾");
+	ret = printf("hello %s yolo\n", "👾");
+	printf("ret = %d\n", ret);
 	printf("\n\n");
 //
 //	printf("real printf\t: ");

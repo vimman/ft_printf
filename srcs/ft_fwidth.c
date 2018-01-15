@@ -17,6 +17,6 @@ int		ft_fwidth(const char *restrict format, t_flags *f)
 		++i;
 	}
 	if (width > 0)
-		printf("[field width is %d] ", width);
+		f->min_w = width;
 	return (i);
 }

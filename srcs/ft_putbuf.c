@@ -8,18 +8,19 @@ int		ft_putbuf(char *str, int fd)
 	static int	k = 0;
 	int			len;
 
+	len = 0;
 	if (!str)
 	{
 		write(fd, buf, ft_strlen(buf));
 		ft_bzero(buf, BUFFSIZE);
 		k = 0;
+		return (0);
 	}
-	else
-		len = ft_strlen(str);
 	while (str && *str)
 	{
 		while (*str && k < BUFFSIZE)
 		{
+			++len;
 			buf[k++] = *str;
 			++str;
 		}

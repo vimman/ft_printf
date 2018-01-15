@@ -17,6 +17,8 @@
 #define DOT		1<<7
 #define LONG	1<<8
 #define LLONG	1<<9
+#define MOD_H	1<<10
+#define MOD_HH	1<<11
 
 typedef struct	s_flags
 {
@@ -25,6 +27,7 @@ typedef struct	s_flags
 	size_t		prec;
 	size_t		min_w;
 	size_t		ret;
+	size_t		len;
 }				t_flags;
 
 int				ft_putbuf(char *str, int fd);

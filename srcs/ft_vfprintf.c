@@ -36,8 +36,8 @@ int		ft_vfprintf(FILE *restrict stream,
 	(void)f;
 	//f.opts = f.opts & PLUS;
 	//ft_putbuf(ft_itoa_base(f.opts, 2), (int)stream);
-	ft_putbuf("", 1);
-	ft_putbuf(NULL, 1);
+	ret += ft_putbuf("", 1);
+	ret += ft_putbuf(NULL, 1);
 	return (ret);
 }
 
