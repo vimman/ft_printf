@@ -14,13 +14,14 @@ int		ft_vfprintf(FILE *restrict stream,
 	f.opts = 0;
 	f.prec = 0;
 	f.min_w = 0;
+	ft_bzero(tmp, BUFFSIZE);
 	while (*format)
 	{
-		i = 0;
+		i = -1;
 		while (*format && *format != '%')
-			tmp[i++] = (char)*format++;
-		ret = ft_putbuf(tmp, 1);
-		bzero(tmp, ft_strlen(tmp));
+			tmp[++i] = (char)*format++;
+		ret += ft_putbuf(tmp, 1);
+		ft_bzero(tmp, BUFFSIZE);
 		if (*format == '%')
 		{
 			++format;
