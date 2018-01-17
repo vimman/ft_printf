@@ -27,7 +27,7 @@ int		ft_vfprintf(FILE *restrict stream,
 			++format;
 			format += ft_flags(format, &f);
 			format += ft_fwidth(format, &f);
-			format += ft_precis(format, &f);
+			format += ft_precis(format, ap, &f);
 			format += ft_length(format, &f);
 			format += ft_ident(format, ap, &f);
 		}

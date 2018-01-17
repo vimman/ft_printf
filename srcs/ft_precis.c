@@ -1,7 +1,7 @@
 #include "ft_printf.h"
 #include "libft.h"
 
-int		ft_precis(const char *restrict format, t_flags *f)
+int		ft_precis(const char *restrict format, va_list ap, t_flags *f)
 {
 	int	i;
 	int	precision;
@@ -17,14 +17,18 @@ int		ft_precis(const char *restrict format, t_flags *f)
 		if (*format == '*')
 		{
 			++i;
-			printf("*]");
+			f->prec = va_arg(ap, int);
+			printf("%d", (int)f->prec);
 		}
-		while (ft_isdigit(*format))
+		else
 		{
-			precision *= 10;
-			precision += *format - '0';
-			++format;
-			++i;
+			while (ft_isdigit(*format))
+			{
+				precision *= 10;
+				precision += *format - '0';
+				++format;
+				++i;
+			}
 		}
 		printf("%d]", precision);
 	}

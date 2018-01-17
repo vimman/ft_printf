@@ -7,7 +7,7 @@
 
 #define BUFFSIZE 256
 
-#define MINUS	1
+#define MINUS	1<<0
 #define PLUS	1<<1
 #define SHARP	1<<2
 #define ZERO	1<<3
@@ -38,7 +38,7 @@ int				ft_vfprintf(FILE *restrict stream,
 char			*ft_ltoa(long n);
 int				ft_flags(const char *restrict format, t_flags *f);
 int				ft_fwidth(const char *restrict format, t_flags *f);
-int				ft_precis(const char *restrict format, t_flags *f);
+int				ft_precis(const char *restrict format, va_list ap, t_flags *f);
 int				ft_length(const char *restrict format, t_flags *f);
 int				ft_ident(const char *restrict format, va_list ap, t_flags *f);
 int				ft_printf(const char *restrict format, ...);

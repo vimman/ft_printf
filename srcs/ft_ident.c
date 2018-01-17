@@ -36,9 +36,9 @@ int		ft_ident(const char *restrict format, va_list ap, t_flags *f)
 {
 	if (*format == 'd')
 		ft_d(ap, f);
-	if (*format == 's')
+	else if (*format == 's')
 		ft_s(ap, f);
-	if (*format == 'c')
+	else if (*format == 'c')
 		ft_c(ap, f);
 	//if (*format == 'f')
 	//	ft_f(ap, f);

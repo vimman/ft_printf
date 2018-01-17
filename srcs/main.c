@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <locale.h>
 #include "ft_printf.h"
 #include "libft.h"
 
@@ -6,6 +7,10 @@ int	ft_printf(const char *restrict format, ...);
 
 int		main(void)
 {
+	//printf("setlocale : %s\n", setlocale(LC_ALL, "fr_FR.UTF-8"));
+	printf("setlocale : %s\n", setlocale(LC_ALL, "en_US.UTF-8"));
+	//printf("MB_CUR_MAX = %d\n", MB_CUR_MAX);
+
 	int ret;
 
 	ft_printf("ft_printf\t: ");
@@ -25,10 +30,19 @@ int		main(void)
 	printf("\n\n");
 
 	ft_putstr("\nft_printf\t: ");
+	ret = ft_printf("precise *  %.*ld\n", 5,9223372036854775807);
+	ft_printf("ret = %d\n", ret);
+	printf("real printf\t: ");
+	ret = printf("precise *  %.*ld\n", 5, 9223372036854775807);
+	printf("ret = %d\n", ret);
+	//printf("oups %.5d\n", 23432357);
+	printf("\n\n");
+
+	ft_putstr("\nft_printf\t: ");
 	ret = ft_printf("hello %ld\n", 9223372036854775807);
 	ft_printf("ret = %d\n", ret);
 	printf("real printf\t: ");
-	ret = printf("hello %ld\n", 9223372036854775807);
+	ret = printf("hello %'ld\n", 9223372036854775807);
 	printf("ret = %d\n", ret);
 	//printf("oups %.5d\n", 23432357);
 	printf("\n\n");
@@ -40,7 +54,15 @@ int		main(void)
 	ret = printf("hello %s yolo\n", "👾");
 	printf("ret = %d\n", ret);
 	printf("\n\n");
-//
+
+	ft_printf("ft_printf\t: ");
+	ret = ft_printf("hello %S yolo\n", L"👾");
+	ft_printf("ret = %d\n", ret);
+	printf("real printf\t: ");
+	ret = printf("hello %S yolo\n", L"👾");
+	printf("ret = %d\n", ret);
+	printf("\n\n");
+
 //	printf("real printf\t: ");
 //	printf("hello %f", 21474.86480);
 //	printf("\nft_printf\t: ");
