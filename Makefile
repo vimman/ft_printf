@@ -23,7 +23,7 @@ all: $(NAME)
 	@true
 
 $(LIB):
-	@make -C libftprintf
+	@make -s -C libftprintf
 
 $(NAME): $(OBJ) $(LIB)
 	@$(CC) $(CFLAGS) -o $(NAME) $^ $(LFLAGS) -I $(HEADERS)
@@ -36,11 +36,11 @@ $(NAME): $(OBJ) $(LIB)
 
 clean:
 	@rm -rf $(OBJ)
-	@make -C libftprintf clean
+	@make -s -C libftprintf clean
 
 fclean: clean
 	@rm -f $(NAME)
-	@make -C libftprintf fclean
+	@make -s -C libftprintf fclean
 
 re: fclean all
 
