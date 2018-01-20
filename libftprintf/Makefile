@@ -1,7 +1,7 @@
-
 NAME	= libftprintf.a
 
 DIR		= srcs
+
 SRCS	=															\
 	ft_abs.c		ft_atoi.c		ft_bzero.c		ft_isalnum.c	\
 	ft_isalpha.c	ft_isascii.c	ft_isdigit.c	ft_isprint.c	\
@@ -22,13 +22,17 @@ SRCS	=															\
 	ft_getnline.c	ft_freetab.c	ft_itoa_base.c
 
 SRC		= $(addprefix $(DIR)/,$(SRCS))
+
 OBJ= $(SRCS:.c=.o)
 
 HEADERS = ./includes
 
 CC      = 	gcc
+
 CFLAGS  = 	-Wall -Wextra -Werror
+
 AR      = 	ar
+
 ARFLAGS = 	rcs
 
 all:$(NAME)
@@ -38,7 +42,7 @@ $(NAME): $(OBJ)
 	@$(AR) $(ARFLAGS) $(NAME) $(OBJ)
 	@printf "\r$$(tput setaf 2)$@$$(tput sgr0)\n"
 
-%.o: $(DIR)/%.c 
+%.o: $(DIR)/%.c Makefile
 	@printf "$$(tput setaf 8)$<"
 	@$(CC) -c $< -I $(HEADERS) $(CFLAGS) && \
 	printf "$$(tput setaf 2)$<$$(tput sgr0)\r$$(tput el)"

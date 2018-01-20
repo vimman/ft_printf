@@ -2,7 +2,7 @@ NAME = ft_printf
 
 CC = clang
 
-CFLAGS = -Wall -Werror -Wextra -g3 #-march=native -flto -fsanitize=address  -std=c99
+CFLAGS = -Wall -Werror -Wextra -g3 #-fsanitize=address
 
 LFLAGS = -Llibftprintf -lftprintf
 
@@ -29,7 +29,7 @@ $(NAME): $(OBJ) $(LIB)
 	@$(CC) $(CFLAGS) -o $(NAME) $^ $(LFLAGS) -I $(HEADERS)
 	@printf "\r$$(tput setaf 2)$@$$(tput sgr0)\n"
 
-%.o: $(DIR)/%.c 
+%.o: $(DIR)/%.c Makefile
 	@printf "$$(tput setaf 8)$<"
 	@$(CC) -c $< -I $(HEADERS) $(CFLAGS) && \
 	printf "$$(tput setaf 2)$<$$(tput sgr0)\r$$(tput el)"
