@@ -22,7 +22,7 @@ SRCS	=															\
 	ft_getnline.c	ft_freetab.c	ft_itoa_base.c
 
 SRC		= $(addprefix $(DIR)/,$(SRCS))
-OBJECTS = $(SRCS:.c=.o)
+OBJ= $(SRCS:.c=.o)
 
 HEADERS = ./includes
 
@@ -32,22 +32,22 @@ AR      = 	ar
 ARFLAGS = 	rcs
 
 all:$(NAME)
+	@true
 
-$(NAME): $(OBJECTS)
-	@printf "$$(tput setaf 1)$@"
-	@$(AR) $(ARFLAGS) $(NAME) $(OBJECTS)
+$(NAME): $(OBJ)
+	@$(AR) $(ARFLAGS) $(NAME) $(OBJ)
 	@printf "\r$$(tput setaf 2)$@$$(tput sgr0)\n"
 
 %.o: $(DIR)/%.c 
-	@printf "$$(tput setaf 1)$<"
-	@$(CC) -c $< -I $(HEADERS) $(CFLAGS) &&\
-	printf "\r$$(tput setaf 2)$<$$(tput sgr0)\n"
+	@printf "$$(tput setaf 8)$<"
+	@$(CC) -c $< -I $(HEADERS) $(CFLAGS) && \
+	printf "$$(tput setaf 2)$<$$(tput sgr0)\r$$(tput el)"
 
 clean:
-	@/bin/rm -f $(OBJECTS)
+	@/bin/rm -f $(OBJ)
 
 fclean:
-	@/bin/rm -f $(OBJECTS)
+	@/bin/rm -f $(OBJ)
 	@/bin/rm -f $(NAME)
 
 re: fclean all

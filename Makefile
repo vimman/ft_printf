@@ -20,19 +20,19 @@ OBJ = $(SRCS:.c=.o)
 HEADERS = includes -I libftprintf/includes
 
 all: $(NAME)
-
-$(NAME): $(OBJ) $(LIB)
-	@printf "$$(tput setaf 1)$@"
-	@$(CC) $(CFLAGS) -o $(NAME) $^ $(LFLAGS) -I $(HEADERS)
-	@printf "\r$$(tput setaf 2)$@$$(tput sgr0)\n"
+	@true
 
 $(LIB):
 	@make -C libftprintf
 
+$(NAME): $(OBJ) $(LIB)
+	@$(CC) $(CFLAGS) -o $(NAME) $^ $(LFLAGS) -I $(HEADERS)
+	@printf "\r$$(tput setaf 2)$@$$(tput sgr0)\n"
+
 %.o: $(DIR)/%.c 
-	@printf "$$(tput setaf 1)$<"
-	@$(CC) -c $< -I $(HEADERS) $(CFLAGS) &&\
-	printf "\r$$(tput setaf 2)$<$$(tput sgr0)\n"
+	@printf "$$(tput setaf 8)$<"
+	@$(CC) -c $< -I $(HEADERS) $(CFLAGS) && \
+	printf "$$(tput setaf 2)$<$$(tput sgr0)\r$$(tput el)"
 
 clean:
 	@rm -rf $(OBJ)
@@ -43,3 +43,5 @@ fclean: clean
 	@make -C libftprintf fclean
 
 re: fclean all
+
+.PHONY: all, clean, fclean, re
