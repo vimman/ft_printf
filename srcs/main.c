@@ -14,7 +14,7 @@ int		main(void)
 	int ret;
 
 	ft_printf("ft_printf\t: ");
-	ret = ft_printf("hello %s yolo\n", "you");
+	ret = ft_printf("%%s hello %s yolo\n", "you");
 	ft_printf("ret = %d\n", ret);
 	printf("real printf\t: ");
 	ret = printf("hello %s yolo\n", "you");

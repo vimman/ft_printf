@@ -6,20 +6,14 @@ int		ft_precis(const char *restrict format, va_list ap, t_flags *f)
 	int	i;
 	int	precision;
 
-	(void)f;
 	i = 0;
 	precision = 0;
 	if (*format == '.')
 	{
 		++i;
 		++format;
-		printf("[precision is ");
 		if (*format == '*')
-		{
-			++i;
 			f->prec = va_arg(ap, int);
-			printf("%d", (int)f->prec);
-		}
 		else
 		{
 			while (ft_isdigit(*format))
@@ -29,8 +23,8 @@ int		ft_precis(const char *restrict format, va_list ap, t_flags *f)
 				++format;
 				++i;
 			}
+			f->prec = precision;
 		}
-		printf("%d]", precision);
 	}
 	return (i);
 }

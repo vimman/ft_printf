@@ -6,7 +6,6 @@ int		ft_fwidth(const char *restrict format, t_flags *f)
 	int	width;
 	int	i;
 
-	(void)f;
 	width = 0;
 	i = 0;
 	while (ft_isdigit(*format))

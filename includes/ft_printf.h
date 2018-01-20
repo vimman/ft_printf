@@ -1,24 +1,24 @@
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
 
-#include <stdarg.h>
-#include <unistd.h>
-#include <stdio.h>
+# include <stdarg.h>
+# include <unistd.h>
+# include <stdio.h>
 
-#define BUFFSIZE 256
+# define BUFFSIZE 256
 
-#define MINUS	1<<0
-#define PLUS	1<<1
-#define SHARP	1<<2
-#define ZERO	1<<3
-#define SPACE	1<<4
-#define WIDTH	1<<5
-#define STAR	1<<6
-#define DOT		1<<7
-#define LONG	1<<8
-#define LLONG	1<<9
-#define MOD_H	1<<10
-#define MOD_HH	1<<11
+# define MINUS	1<<0
+# define PLUS	1<<1
+# define SHARP	1<<2
+# define ZERO	1<<3
+# define SPACE	1<<4
+# define WIDTH	1<<5
+# define STAR	1<<6
+# define DOT		1<<7
+# define LONG	1<<8
+# define LLONG	1<<9
+# define MOD_H	1<<10
+# define MOD_HH	1<<11
 
 typedef struct	s_flags
 {
@@ -44,5 +44,6 @@ int				ft_ident(const char *restrict format, va_list ap, t_flags *f);
 int				ft_printf(const char *restrict format, ...);
 int				ft_d(va_list ap, t_flags *f);
 int				ft_s(va_list ap, t_flags *f);
-int				ft_s(va_list ap, t_flags *f);
+int				ft_c(va_list ap, t_flags *f);
+int				ft_f(va_list ap, t_flags *f);
 #endif

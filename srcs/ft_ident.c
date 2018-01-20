@@ -25,10 +25,13 @@ int		ft_s(va_list ap, t_flags *f)
 
 int		ft_d(va_list ap, t_flags *f)
 {
+	char	*fr;
+
 	if (f->opts & LONG) //TODO don't forget to free
-		ft_putbuf(ft_ltoa(va_arg(ap, long int)), 1);
+		ft_putbuf((fr = ft_ltoa(va_arg(ap, long int))), 1);
 	else
-		ft_putbuf(ft_itoa(va_arg(ap, int)), 1);
+		ft_putbuf((fr = ft_itoa(va_arg(ap, int))), 1);
+	free(fr);
 	return (4);
 }
 

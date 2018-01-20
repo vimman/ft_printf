@@ -3,17 +3,16 @@
 
 int		ft_flags(const char *restrict format, t_flags *f)
 {
-	(void)f;
 	if (*format == '-')
-		printf("[flag -] ");
+		f->opts ^= MINUS;
 	else if (*format == '0')
-		printf("[flag 0] ");
+		f->opts ^= ZERO;
 	else if (*format == '+')
-		printf("[flag +] ");
+		f->opts ^= PLUS;
 	else if (*format == ' ')
-		printf("[flag space] ");
+		f->opts ^= SPACE;
 	else if (*format == '#')
-		printf("[flag #] ");
+		f->opts ^= SHARP;
 	else
 		return (0);
 	return (1);
