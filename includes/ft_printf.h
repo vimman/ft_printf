@@ -4,6 +4,8 @@
 # include <stdarg.h>
 # include <unistd.h>
 # include <stdio.h>
+# include <locale.h>
+# include <stdlib.h>
 
 # define BUFFSIZE 256
 
@@ -22,6 +24,7 @@
 
 typedef struct	s_flags
 {
+	int			fd;
 	int			opts;
 
 	size_t		prec;
@@ -46,4 +49,6 @@ int				ft_d(va_list ap, t_flags *f);
 int				ft_s(va_list ap, t_flags *f);
 int				ft_c(va_list ap, t_flags *f);
 int				ft_f(va_list ap, t_flags *f);
+int			ft_putwstr(wchar_t *str, int fd);
+
 #endif
