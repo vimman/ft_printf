@@ -1,4 +1,4 @@
-NAME	= libftprintf.a
+NAME	= libft.a
 
 DIR		= srcs
 
@@ -40,7 +40,7 @@ all:$(NAME)
 
 $(NAME): $(OBJ)
 	@$(AR) $(ARFLAGS) $(NAME) $(OBJ)
-	@printf "\r$$(tput setaf 2)$@$$(tput sgr0)\n"
+	@printf "\r$$(tput setaf 2)$@$$(tput sgr0)\n\a"
 
 %.o: $(DIR)/%.c Makefile
 	@printf "$$(tput setaf 8)$<"

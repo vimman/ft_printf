@@ -13,6 +13,8 @@ int		ft_flags(const char *restrict format, t_flags *f)
 		f->opts ^= SPACE;
 	else if (*format == '#')
 		f->opts ^= SHARP;
+	else if (*format == '\'')
+		f->opts ^= SEPAR;
 	else
 		return (0);
 	return (1);

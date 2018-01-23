@@ -2,13 +2,13 @@ NAME = ft_printf
 
 CC = clang
 
-CFLAGS = -Wall -Werror -Wextra -g3 #-fsanitize=address
+CFLAGS = -Wall -Werror -Wextra -g3 -fsanitize=address
 
-LFLAGS = -Llibftprintf -lftprintf
+LFLAGS = -Llibft -lft
 
 DIR = srcs
 
-LIB = libftprintf/libftprintf.a
+LIB = libft/libft.a
 
 SRCS = main.c			ft_printf.c	ft_putbuf.c	ft_vfprintf.c	ft_flags.c	\
 	   ft_fwidth.c		ft_precis.c	ft_length.c	ft_ltoa.c		ft_ident.c	\
@@ -18,13 +18,13 @@ SRC = $(addprefix $(DIR)/,$(SRCS))
 
 OBJ = $(SRCS:.c=.o)
 
-HEADERS = includes -I libftprintf/includes
+HEADERS = includes -I libft/includes
 
 all: $(NAME)
 	@true
 
 $(LIB):
-	@make -s -C libftprintf
+	@make -s -C libft
 
 $(NAME): $(OBJ) $(LIB)
 	@$(CC) $(CFLAGS) -o $(NAME) $^ $(LFLAGS) -I $(HEADERS)
@@ -37,11 +37,11 @@ $(NAME): $(OBJ) $(LIB)
 
 clean:
 	@rm -rf $(OBJ)
-	@make -s -C libftprintf clean
+	@make -s -C libft clean
 
 fclean: clean
 	@rm -f $(NAME)
-	@make -s -C libftprintf fclean
+	@make -s -C libft fclean
 
 re: fclean all
 
