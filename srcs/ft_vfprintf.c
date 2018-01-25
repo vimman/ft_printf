@@ -1,6 +1,13 @@
 #include "ft_printf.h"
 #include "libft.h"
 
+void	init(t_flags *f)
+{
+	f->opts = 0;
+	f->prec = 0;
+	f->min_w = 0;
+}
+
 int		ft_vfprintf(FILE *restrict stream,
 		const char *restrict format, va_list ap)
 {
@@ -9,11 +16,7 @@ int		ft_vfprintf(FILE *restrict stream,
 	char	tmp[BUFFSIZE];
 	t_flags	f;
 
-
 	ret = 0;
-	f.opts = 0;
-	f.prec = 0;
-	f.min_w = 0;
 	f.fd = stream->_file;
 	ft_bzero(tmp, BUFFSIZE);
 	while (*format)
@@ -25,6 +28,7 @@ int		ft_vfprintf(FILE *restrict stream,
 		ft_bzero(tmp, BUFFSIZE);
 		if (*format == '%')
 		{
+			init(&f);
 			++format;
 			format += ft_flags(format, &f);
 			format += ft_fwidth(format, ap, &f);
@@ -33,9 +37,5 @@ int		ft_vfprintf(FILE *restrict stream,
 			format += ft_ident(format, ap, &f);
 		}
 	}
-	//f.opts = f.opts & PLUS;
-	//ft_putbuf(ft_itoa_base(f.opts, 2), (int)stream);
-	//ret += ft_putbuf("", f.fd);
-	ret = ft_putbuf(NULL, f.fd);
-	return (ret);
+	return (ret = ft_putbuf(NULL, f.fd));
 }

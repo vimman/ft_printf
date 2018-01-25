@@ -1,6 +1,6 @@
 #include "libft.h"
 
-char    *ft_itoa_base(int value, int base)
+char	*ft_itoa_base(int value, int base)
 {
 	char		*base_char;
 	char		*ret;
@@ -23,7 +23,7 @@ char    *ft_itoa_base(int value, int base)
 	}
 	ret = (char*)malloc(sizeof(char) * i + 1);
 	ret[i + 1] = '\0';
-	while (i >=0)
+	while (i >= 0)
 	{
 		ret[i] = base_char[tmp % base];
 		i--;

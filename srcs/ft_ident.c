@@ -39,7 +39,7 @@ char	*ft_d_precis(t_flags *f, char *fr)
 	ft_bzero(ret, f->prec + 1);
 	ft_memset(ret, '0', f->prec);
 	len = ft_strlen(fr);
-	while(++i < len)
+	while (++i < len)
 		ret[f->prec - len + i] = fr[i];
 	free(fr);
 	return (ret);
@@ -59,7 +59,7 @@ char	*ft_d_width(t_flags *f, char *fr)
 		ft_memset(ret, '0', f->min_w);
 	else
 		ft_memset(ret, ' ', f->min_w);
-	while(++i < len)
+	while (++i < len)
 		ret[f->min_w - len + i] = fr[i];
 	free(fr);
 	return (ret);
@@ -77,7 +77,7 @@ char	*ft_d_separ(char *fr)
 	ret = (char*)malloc(26);
 	ft_bzero(ret, 26);
 	ft_memmove(ret, fr, len);
-	while(++k < len)
+	while (++k < len)
 		if (!(k % 3))
 		{
 			cp_size = ft_strlen(&ret[len - k]);
@@ -119,7 +119,5 @@ int		ft_ident(const char *restrict format, va_list ap, t_flags *f)
 		ft_c(ap, f);
 	else if (*format == '%')
 		ft_putbuf("%", f->fd);
-	//if (*format == 'f')
-	//	ft_f(ap, f);
 	return (1);
 }

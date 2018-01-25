@@ -9,14 +9,6 @@ int		ft_putbuf(char *str, int fd)
 	int			len;
 
 	len = 0;
-	if (!str)
-	{
-		len = ft_strlen(buf);
-		write(fd, buf, len);
-		ft_bzero(buf, BUFFSIZE);
-		k = 0;
-		return (len);
-	}
 	while (str && *str)
 	{
 		while (*str && k < BUFFSIZE)
@@ -25,12 +17,16 @@ int		ft_putbuf(char *str, int fd)
 			buf[k++] = *str;
 			++str;
 		}
-		if (k == BUFFSIZE)
-		{
-			write(fd, buf, BUFFSIZE);
-			ft_bzero(buf, BUFFSIZE);
-			k = 0;
-		}
+		write(fd, buf, BUFFSIZE);
+		ft_bzero(buf, BUFFSIZE);
+		k = 0;
+	}
+	if (!str)
+	{
+		len = ft_strlen(buf);
+		write(fd, buf, len);
+		ft_bzero(buf, BUFFSIZE);
+		k = 0;
 	}
 	return (len);
 }

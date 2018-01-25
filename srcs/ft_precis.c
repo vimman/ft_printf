@@ -13,11 +13,8 @@ int		ft_precis(const char *restrict format, va_list ap, t_flags *f)
 		f->opts ^= PRECIS;
 		++i;
 		++format;
-		if (*format == '*')
-		{
-			++i;
+		if (*format == '*' && ++i)
 			f->prec = va_arg(ap, int);
-		}
 		else
 		{
 			while (ft_isdigit(*format))
