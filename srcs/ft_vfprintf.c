@@ -33,12 +33,9 @@ int		ft_vfprintf(FILE *restrict stream,
 			format += ft_ident(format, ap, &f);
 		}
 	}
-	(void)f;
 	//f.opts = f.opts & PLUS;
 	//ft_putbuf(ft_itoa_base(f.opts, 2), (int)stream);
 	//ret += ft_putbuf("", f.fd);
 	ret = ft_putbuf(NULL, f.fd);
 	return (ret);
 }
-
-

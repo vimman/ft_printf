@@ -28,25 +28,27 @@ int		ft_s(char const *restrict format, va_list ap, t_flags *f)
 
 char	*ft_d_precis(t_flags *f, char *fr)
 {
-	int		i;
-	int		len;
+	size_t	i;
+	size_t	len;
 	char	*ret;
 
+	(void)f;
 	i = -1;
 	len = ft_strlen(fr);
 	ret = (char*)malloc(f->prec + 1);
 	ft_bzero(ret, f->prec + 1);
 	ft_memset(ret, '0', f->prec);
-	//while(++i < len)
-		//ret[f->prec - len + i] = fr[i];
+	len = ft_strlen(fr);
+	while(++i < len)
+		ret[f->prec - len + i] = fr[i];
 	free(fr);
 	return (ret);
 }
 
 char	*ft_d_width(t_flags *f, char *fr)
 {
-	int		i;
-	int		len;
+	size_t	i;
+	size_t	len;
 	char	*ret;
 
 	i = -1;
@@ -65,9 +67,9 @@ char	*ft_d_width(t_flags *f, char *fr)
 
 char	*ft_d_separ(char *fr)
 {
-	int		len;
-	int		cp_size;
-	int		k;
+	size_t	len;
+	size_t	cp_size;
+	size_t	k;
 	char	*ret;
 
 	k = 0;

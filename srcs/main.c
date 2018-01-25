@@ -17,7 +17,7 @@ int		main(void)
 	ret = ft_printf("%% hello %s yolo\n", "you");
 	ft_printf("ret = %d\n", ret);
 	printf("real printf\t: ");
-	ret = printf("hello %s yolo\n", "you");
+	ret = printf("%% hello %s yolo\n", "you");
 	printf("ret = %d\n", ret);
 	printf("\n\n");
 
@@ -30,14 +30,13 @@ int		main(void)
 	printf("\n\n");
 
 	ft_putstr("\nft_printf\t: ");
-	ret = ft_printf("precise %40.ld\n", 9223372036854775807);
+	ret = ft_printf("precise %30.40ld\n", 9223372036854775807);
 	ft_printf("ret = %d\n", ret);
 	printf("real printf\t: ");
-	ret = printf("precise %40.ld\n", 9223372036854775807);
+	ret = printf("precise %30.40ld\n", 9223372036854775807);
 	printf("ret = %d\n", ret);
 	//printf("oups %.5d\n", 23432357);
 	printf("\n\n");
-
 
 	ft_putstr("\nft_printf\t: ");
 	ret = ft_printf("precise *  %.*ld\n", 35,9223372036854775807);
