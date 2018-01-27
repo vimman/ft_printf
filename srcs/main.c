@@ -2,6 +2,7 @@
 #include <locale.h>
 #include "ft_printf.h"
 #include "libft.h"
+#include "libft.h"
 
 int	ft_printf(const char *restrict format, ...);
 
@@ -22,10 +23,10 @@ int		main(void)
 	printf("\n\n");
 
 	ft_putstr("\nft_printf\t: ");
-	ret = ft_printf("hello %d\n", 42);
+	ret = ft_printf("hello %X\n", 42);
 	ft_printf("ret = %d\n", ret);
 	printf("real printf\t: ");
-	ret = printf("hello %d\n", 42);
+	ret = printf("hello %X\n", 42);
 	printf("ret = %d\n", ret);
 	printf("\n\n");
 
@@ -33,7 +34,7 @@ int		main(void)
 	ret = ft_printf("precise %30.40ld\n", 9223372036854775807);
 	ft_printf("ret = %d\n", ret);
 	printf("real printf\t: ");
-	ret = printf("precise %30.40ld\n", 9223372036854775807);
+	ret = printf("precise %.40ld\n", 9223372036854775807);
 	printf("ret = %d\n", ret);
 	//printf("oups %.5d\n", 23432357);
 	printf("\n\n");

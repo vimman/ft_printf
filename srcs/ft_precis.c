@@ -1,5 +1,4 @@
 #include "ft_printf.h"
-#include "libft.h"
 
 int		ft_precis(const char *restrict format, va_list ap, t_flags *f)
 {

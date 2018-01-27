@@ -6,6 +6,7 @@
 # include <stdio.h>
 # include <locale.h>
 # include <stdlib.h>
+# include "libft.h"
 
 # define BUFFSIZE 256
 

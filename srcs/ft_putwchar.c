@@ -1,5 +1,4 @@
 #include "ft_printf.h"
-#include "libft.h"
 
 int	ft_mask1(wchar_t c, char *str)
 {

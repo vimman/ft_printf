@@ -1,5 +1,4 @@
 #include "ft_printf.h"
-#include "libft.h"
 
 void	init(t_flags *f)
 {

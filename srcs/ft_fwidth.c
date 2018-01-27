@@ -1,5 +1,4 @@
 #include "ft_printf.h"
-#include "libft.h"
 
 int		ft_fwidth(const char *restrict format, va_list ap, t_flags *f)
 {

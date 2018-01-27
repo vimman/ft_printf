@@ -1,5 +1,4 @@
 #include "ft_printf.h"
-#include "libft.h"
 
 int		ft_f(va_list ap, t_flags *f)
 {
@@ -31,10 +30,13 @@ char	*ft_d_precis(t_flags *f, char *fr)
 	size_t	i;
 	size_t	len;
 	char	*ret;
+	char	*tmp;
 
-	(void)f;
 	i = -1;
+	tmp = fr;
 	len = ft_strlen(fr);
+	while(tmp[++i] == '0')
+		len--;
 	ret = (char*)malloc(f->prec + 1);
 	ft_bzero(ret, f->prec + 1);
 	ft_memset(ret, '0', f->prec);
@@ -97,16 +99,32 @@ int		ft_d(va_list ap, t_flags *f)
 		fr = ft_ltoa(va_arg(ap, long int));
 	else
 		fr = ft_itoa(va_arg(ap, int));
-	if (f->opts & SEPAR)
-		fr = ft_d_separ(fr);
-	if (f->opts & WIDTH)
-		fr = ft_d_width(f, fr);
 	if (f->opts & PRECIS)
 		fr = ft_d_precis(f, fr);
+	if (f->opts & WIDTH)
+		fr = ft_d_width(f, fr);
+	if (f->opts & SEPAR)
+		fr = ft_d_separ(fr);
 	ft_putbuf(fr, f->fd);
 	size = ft_strlen(fr);
 	free(fr);
 	return (size);
+}
+
+int		ft_x(va_list ap, t_flags *f, int down)
+{
+	char	*tmp;
+	int		i;
+
+	i = -1;
+	if (down)
+	{
+		tmp = ft_itoa_base(va_arg(ap, int), 16);
+		while (tmp[++i])
+			tmp[i] = ft_tolower(tmp[i]);
+		return (ft_putbuf(tmp, f->fd));
+	}
+	return (ft_putbuf(ft_itoa_base(va_arg(ap, int), 16), f->fd));
 }
 
 int		ft_ident(const char *restrict format, va_list ap, t_flags *f)
@@ -119,5 +137,9 @@ int		ft_ident(const char *restrict format, va_list ap, t_flags *f)
 		ft_c(ap, f);
 	else if (*format == '%')
 		ft_putbuf("%", f->fd);
+	else if (*format == 'x')
+		ft_x(ap, f, 1);
+	else if (*format == 'X')
+		ft_x(ap, f, 0);
 	return (1);
 }

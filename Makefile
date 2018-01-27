@@ -16,7 +16,9 @@ SRCS = ft_printf.c	ft_putbuf.c	ft_vfprintf.c	ft_flags.c	\
 	   ft_fwidth.c		ft_precis.c	ft_length.c	ft_ltoa.c		ft_ident.c	\
 	   ft_putwchar.c
 
-SRCS +=																\
+SRC = $(addprefix $(DIR)/,$(SRCS))
+
+SRCS_LIB =															\
 	ft_abs.c		ft_atoi.c		ft_bzero.c		ft_isalnum.c	\
 	ft_isalpha.c	ft_isascii.c	ft_isdigit.c	ft_isprint.c	\
 	ft_isspace.c	ft_itoa.c		ft_labs.c		ft_lstadd.c		\
@@ -35,26 +37,26 @@ SRCS +=																\
 	ft_strtrim.c	ft_tolower.c	ft_toupper.c	get_next_line.c	\
 	ft_getnline.c	ft_freetab.c	ft_itoa_base.c
 
-SRC = $(addprefix $(DIR)/,$(SRCS))
-
 OBJ = $(addprefix $(OBJDIR)/,$(SRCS:.c=.o))
 
-HEADERS = includes -I ../libft/includes
+OBJ_LIB = $(addprefix $(OBJDIR)/,$(SRCS_LIB:.c=.o))
+
+HEADERS = -I includes -I libft/includes
 
 all: $(NAME)
 
 $(LIB):
-	@make -s -C libft
+	@make -C libft
 	@mkdir -p $(OBJDIR)
 	@cd objs && ar -x ../libft/libft.a
 
 $(NAME): $(LIB) $(OBJ)
-	@ar rcs $(NAME) $^
+	@ar rcs $(NAME) $(OBJ) $(OBJ_LIB)
 	@printf "\r$$(tput setaf 2)$@$$(tput sgr0)\n"
 
 $(OBJDIR)/%.o: $(DIR)/%.c Makefile
 	@printf "$$(tput setaf 8)$<"
-	@cd objs && $(CC) -c ../$< -I ../$(HEADERS) $(CFLAGS) && \
+	@$(CC) -o $@ -c $< $(HEADERS) $(CFLAGS) && \
 	printf "$$(tput setaf 2)$<$$(tput sgr0)\r$$(tput el)"
 
 clean:
@@ -67,8 +69,8 @@ fclean: clean
 
 re: fclean all
 
-test:$(NAME)
-	@$(CC) $(DIR)/main.c -Iincludes -Ilibft/includes $(NAME) 
-
+test: $(NAME)
+	@$(CC) $(DIR)/*.c $(HEADERS) $(LIB)
+	@printf "\r$$(tput setaf 2)$@$$(tput sgr0)\n"
 
 .PHONY: all, clean, fclean, re

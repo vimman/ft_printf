@@ -1,5 +1,4 @@
 #include "ft_printf.h"
-#include "libft.h"
 
 int		ft_ll(const char *restrict format, t_flags *f)
 {

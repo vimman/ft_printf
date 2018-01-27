@@ -1,5 +1,4 @@
 #include <unistd.h>
-#include "libft.h"
 #include "ft_printf.h"
 
 int		ft_putbuf(char *str, int fd)
@@ -9,14 +8,14 @@ int		ft_putbuf(char *str, int fd)
 	int			len;
 
 	len = 0;
-	while (str && *str)
+	while (str && *str && k < BUFFSIZE)
 	{
-		while (*str && k < BUFFSIZE)
-		{
-			++len;
-			buf[k++] = *str;
-			++str;
-		}
+		++len;
+		buf[k++] = *str;
+		++str;
+	}
+	if (k == BUFFSIZE)
+	{
 		write(fd, buf, BUFFSIZE);
 		ft_bzero(buf, BUFFSIZE);
 		k = 0;
