@@ -1,0 +1,6 @@
+*.o
+libft/*.o
+objs
+**/*.a
+tags
+ft_printf
